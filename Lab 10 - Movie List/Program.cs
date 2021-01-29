@@ -6,6 +6,7 @@ namespace Lab_10___Movie_List
     {
         static void Main(string[] args)
         {
+            //Array of movies objects
             Movie[] movies = new Movie[10];
             movies[0] = new Movie("Monsters Inc.", "animated");
             movies[1] = new Movie("Redline", "animated");
@@ -18,22 +19,32 @@ namespace Lab_10___Movie_List
             movies[8] = new Movie("Christmas With The Cranks", "christmas");
             movies[9] = new Movie("Home Alone 2", "christmas");
             char checkFlag = 'y';
+
+            //Intro
             Console.WriteLine("Welcome to the Movie List Application!");
             Console.WriteLine("\nThere are 10 movies in this list.");
 
             while(checkFlag == 'y')
             {
+                //Array of genres
                 string[] categoryArray = { "Animated", "Drama", "Horror", "Scifi" , "Christmas"};
+
+                //Ask user what category/number
                 Console.WriteLine("\nWhat category are you interested in?");
+
+                //Get category number
                 for (int i = 0; i < categoryArray.Length; i++)
                 {
                     Console.WriteLine(i+1 + ". " + categoryArray[i]);
                 }
                 int categorySelect = int.Parse(Console.ReadLine())-1;
+
+                //Get movie.category
                 string category = categoryArray[categorySelect];
 
                 Console.WriteLine();
 
+                //Write movie that matches category
                 foreach(Movie m in movies)
                 {
                     if (m.Category.Equals(category.ToLower()))
@@ -42,6 +53,7 @@ namespace Lab_10___Movie_List
                     }
                 }
 
+                //Ask user to try again
                 Console.WriteLine("\nContinue? (y/n)");
                 checkFlag = char.ToLower(Console.ReadLine()[0]);
             }
